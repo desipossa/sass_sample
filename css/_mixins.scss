@@ -1,0 +1,67 @@
+@mixin responsive($size1: $inner-size, $size2: $size-mobile) {
+    @media(max-width: $size1) {
+        @content;
+    }
+
+    @media(max-width: $size2) {
+        @content;
+    }
+}
+
+@mixin defaultSection() {
+    padding: $default-padding;
+
+    &.bg {
+        background: $default-bg;
+    }
+
+    .title {
+        h2 {
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 400;
+            margin-top: 16px;
+        }
+
+        max-width: $inner-size;
+        margin: 0 auto;
+        margin-bottom: 32px;
+    }
+
+    .inner {
+        max-width: $inner-size;
+        margin: 0 auto;
+        background: tomato;
+
+        &.flex {
+            display: flex;
+            gap: $default-gap;
+
+            &>* {
+                flex: 1;
+                background: #00f;
+            }
+        }
+    }
+
+    @include responsive() {
+        .title {
+            margin: 0 $default-gap / 2;
+            margin-bottom: 32px;
+        }
+
+        .inner {
+            margin: 0 $default-gap / 2;
+
+            &.flex {
+                flex-direction: column;
+            }
+        }
+    }
+
+
+}
